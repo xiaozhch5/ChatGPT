@@ -276,13 +276,12 @@ async function chatCompletions(req, res) {
 
 async function models(req, res) {
     let key = getOpenAIKey();
+    let orgId = generateId();
     try {
         const response = await axios.get(
             `https://api.openai.com/v1/models`,
             {
                 headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
                     Authorization: `Bearer ${key}`,
                 },
             },
