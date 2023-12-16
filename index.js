@@ -1,5 +1,5 @@
 import express, { json, urlencoded } from 'express';
-import {completions, chatCompletions, models} from './routes.js';
+import {completions, chatCompletions, models, embeddings} from './routes.js';
 import { corsMiddleware, rateLimitMiddleware } from './middlewares.js';
 import { DEBUG, SERVER_PORT } from './config.js';
 
@@ -27,6 +27,7 @@ app.all("/", async function (req, res) {
 app.post("/v1/completions", completions);
 app.post("/v1/chat/completions", chatCompletions);
 app.get("/v1/models", models)
+app.post("/v1/embeddings", embeddings)
 
 // Start server
 app.listen(SERVER_PORT, () => {
